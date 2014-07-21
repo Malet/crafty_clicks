@@ -18,21 +18,23 @@ class CraftyClicks
 private
   
   def addresses(json)
+    # Format the list of delivery points into a readable list
+    address_list = json['delivery_points'].map do |delivery_point|
+      address = ""
+      address += delivery_point['line_1'] unless delivery_point['line_1']. == ""
+      address += " #{delivery_point['line_2']}" unless delivery_point['line_2']. == ""
+
+      address
+    end.sort do |a1, a2|
+      # Sort by house number where possible
+      a1.match(/^[0-9]+/).try(:[], 0).to_i <=>
+      a2.match(/^[0-9]+/).try(:[], 0).to_i
+    end
+
     {
-      addresses: json['delivery_points'].map do |delivery_point|
-        {
-          line_1: delivery_point['line_1'],
-          line_2: delivery_point['line_2']
-          # line3: thoroughfare['thoroughfare_name'],
-          # line4: thoroughfare['thoroughfare_descriptor']
-        }
-      end,
+      addresses: address_list,
       town: json['town'],
       postcode: json['postcode']
-      # postal_county: json['postal_county'],
-      # traditional_county: json['traditional_county'],
-      # dependent_locality: json['dependent_locality'],
-      # double_dependent_locality: json['double_dependent_locality'],
     }
   end
 

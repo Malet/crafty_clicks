@@ -3,12 +3,13 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
-  spec.name          = "Crafty Clicks"
-  spec.version       = '0.0.1'
+  spec.name          = "crafty_clicks"
+  spec.version       = '0.0.6'
   spec.authors       = ["Michael Malet"]
   spec.email         = ["michael@nervd.com"]
-  spec.summary       = %q{This gem interfaces with Crafty Clicks' JSONP API}
-  spec.homepage      = ""
+  spec.summary       = %q{Crafty Clicks - Addresses by Postcode}
+  spec.description   = %q{This gem interfaces with Crafty Clicks' JSONP API}
+  spec.homepage      = "https://github.com/malet/crafty_clicks"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -17,5 +18,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.6"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rake", '~> 0'
 end
