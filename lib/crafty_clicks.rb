@@ -4,10 +4,10 @@ require 'net/http'
 
 class CraftyClicks
   RAPID_URL = 'http://pcls1.craftyclicks.co.uk/json/rapidaddress'
-  # BASIC_URL = 'http://pcls1.craftyclicks.co.uk/json/basicaddress'
-  def initialize(key:, env: :test, type: :rapid)
+
+  def initialize(key:, env: :test)
     # Only set the auth key if in production (to avoid unwanted charges)
-    @env, @type = env, type
+    @env = env
     @key = @env == :production ? key : nil
   end
 
