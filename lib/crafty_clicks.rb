@@ -51,7 +51,7 @@ private
   def lookup_postcode_cached(postcode)
     # Automatically use the rails cache if it's available
     if defined? Rails
-      key = ['craftyclicks', @env, postcode]
+      key = ['craftyclicks', @env, postcode.tr(' ','').upcase]
       if cached = Rails.cache.fetch(key)
         return cached
       else
